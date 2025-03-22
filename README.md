@@ -36,7 +36,7 @@ A Python script that allows you to search for files in your Dropbox account usin
 
 1. Clone this repository:
 ```bash
-git clone https://github.com/yourusername/dropbox-bulk-search-download.git
+git clone https://github.com/GeekLord/dropbox-bulk-search-download.git
 cd dropbox-bulk-search-download
 ```
 
