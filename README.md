@@ -156,10 +156,20 @@ success = download_file(dbx, "/path/to/file.pdf", "downloads")
 ```mermaid
 graph TD
     A[Start] --> B[Read Keywords from CSV]
-    B --> C[Authenticate with Dropbox]
-    C --> D[Search for Files]
-    D --> E[Download Matching Files]
-    E --> F[End]
+    B --> C{CSV Read Error?}
+    C -->|Yes| D[Log Error & Exit]
+    C -->|No| E[Authenticate with Dropbox]
+    E --> F{Auth Error?}
+    F -->|Yes| G[Log Error & Exit]
+    F -->|No| H[Search for Files]
+    H --> I{Search Error?}
+    I -->|Yes| J[Log Error & Continue]
+    I -->|No| K[Download Matching Files]
+    K --> L{Download Error?}
+    L -->|Yes| M[Log Error & Continue]
+    L -->|No| N[End]
+    J --> K
+    M --> N
 ```
 
 ### File Structure
