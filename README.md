@@ -12,7 +12,7 @@ A Python script that allows you to search for files in your Dropbox account usin
 
 **Shobhit Kumar Prabhakar**
 - Website: [https://shobhit.net/](https://shobhit.net/)
-- GitHub: [@yourusername](https://github.com/yourusername)
+- GitHub: [@GeekLord](https://github.com/GeekLord)
 
 ## Features
 
