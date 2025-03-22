@@ -36,7 +36,7 @@ A Python script that allows you to search for files in your Dropbox account usin
 
 1. Clone this repository:
 ```bash
-git clone https://github.com/yourusername/dropbox-bulk-search-download.git
+git clone https://github.com/GeekLord/dropbox-bulk-search-download.git
 cd dropbox-bulk-search-download
 ```
 
@@ -156,10 +156,20 @@ success = download_file(dbx, "/path/to/file.pdf", "downloads")
 ```mermaid
 graph TD
     A[Start] --> B[Read Keywords from CSV]
-    B --> C[Authenticate with Dropbox]
-    C --> D[Search for Files]
-    D --> E[Download Matching Files]
-    E --> F[End]
+    B --> C{CSV Read Error?}
+    C -->|Yes| D[Log Error & Exit]
+    C -->|No| E[Authenticate with Dropbox]
+    E --> F{Auth Error?}
+    F -->|Yes| G[Log Error & Exit]
+    F -->|No| H[Search for Files]
+    H --> I{Search Error?}
+    I -->|Yes| J[Log Error & Continue]
+    I -->|No| K[Download Matching Files]
+    K --> L{Download Error?}
+    L -->|Yes| M[Log Error & Continue]
+    L -->|No| N[End]
+    J --> K
+    M --> N
 ```
 
 ### File Structure
